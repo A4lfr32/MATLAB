@@ -1,0 +1,30 @@
+Observación:
+La red perceptrón lo que hace es memorizar en categorías, en el fondo se dice que en cuentra la combinación
+de "if" o "Si" anidados que mejor concuerden con la respusta deseada.
+Siendo así al ser una respuesta no lineal (mientras más de algo más de lo otro) sino que es algo por el estilo de.
+
+si las anteriores 30 muestras de 2 en 2, eran 0.1 más grandes que cada dato vecino de impar en impar, entonces tira este. Sea este el 
+caso o sea cualquier otro ejemplo.
+con este ejemplo tal vez no se vea, pero un pequeñito error en una predicción y utilizarlo denuevo para predecir es gravísimo. esa sola predicción
+podría ser suficiente para que piense que la tendencia debería bajar y no subir. repito: por más pequeño que sea el error en una serie con tanto ruido, termina teniendo mucha influencia.
+ya que esas variaciones tan bruscan terminan considerandose en la red neuronal y un pequeño error será interpretado como parte del sistema y perfectamente acorde a lo real.
+
+pues ese nuevo dato cambia la "categoría" radicalmente (en cambio en redes lineales un pequeño cambio en la entrada un pequeño cambio en la salida)
+
+-------- Solución
+Dado que no quiero que aprenda a corto plazo con esos cambios tan bruscos, sino que busco a largo plazo obtener tendencias generalizadas.
+si bien podría ser la estrategia hacer predicciones a corto plazo, es difícil sostener la veracidad de cualquier predicción, ya que 
+se estaría tratando de predecir el comportamiento de los agentes a nivel individual y no a nivel colectivo. lo que estadísticamente es más difícil sino imposible.
+mientras que a nivel colectivo se suele cumplir distribuciones normales al superar cierto numero de agentes de la bolsa o transacciones.
+
+1)Entonces elimino ese ruido antes de entrenarle, sea sacando a) media, b) sub-muestreando
+--->El problema es que si se toman datos cada n muestras, entonces la predicción tiene que tener vacios entre cada n muestras
+2)Entreno con ruido, para inmunizar a esos cambios.
+---> mejoró un poco pero se tiene la observación 1)
+
+-----OBservación 1)
+los datos no tiene información de "caídas fuertes", ni "subidas fuertes". por lo tanto la Red neuronal nunca se desprovista
+de este tipo de predicciones. 
+
+----Solucion 2
+Le he puesto una cantidad exagerada de iteraciones, parece que se comporta mejor.
